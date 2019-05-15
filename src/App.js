@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { device } from './components/devices'
+import styled from 'styled-components'
+import QuoteBox  from './components/QuoteBox'
+import { COLOR } from './components/color'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const AppHeader = styled.h1`
+  text-align: center;
+  color: ${COLOR.YELLOW};
+  font-size: 3em;
+  margin: 0.5em auto;
+`;
+
+const AppContainer = styled.div`
+`;
+
+
+
+
+const App = () => (
+
+  <AppContainer>
+    <AppHeader>Random Quote Generator</AppHeader>
+    <QuoteBox></QuoteBox>
+
+
+  </AppContainer>
+
+)
+
+
 
 export default App;
