@@ -1,46 +1,50 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { COLOR } from './color'
-import { device } from './devices'
 import { Button } from './button'
+import { quotes } from './quotes'
 
 const QuoteContainer = styled.div`
   margin: 0 auto;
-  background: ${COLOR.LIGHT_GREY};
+  background: ${COLOR.BLACK};
   border-radius: 5px;
   height: 40vh;
   width: 80vw;  
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
+  box-shadow: 0 0.5rem 0.7rem 0 rgba(0,0,0,0.5);
+
+
 `;
 
 const Quote = styled.div`
   margin: 0 auto;
   padding: 1em;
+  color: white;
 `;
 
 const ButtonContainer = styled.div`
-  display: flex;
   margin: 0 auto;
-
+  padding-bottom: 5em;
 `;
 
-const Authors = {
-  name: 'Carlos Fegurgur'
-}
-
 export default function QuoteBox() {
+
+  let randNum = Math.floor(Math.random() * quotes.length)
+  const [num, setNum] = useState(0)
+  
+
   return (
       <QuoteContainer>
         <Quote>
-          <blockquote>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, dolorem? Inventore tempore dolores saepe minus. Nostrum veritatis perspiciatis consequuntur eaque!
-          <br /><br /><cite>- Carlos Fegurgur</cite>
+          <blockquote><i class="fas fa-quote-left"></i>  {quotes[num].quote}  <i class="fas fa-quote-right"></i>
+          <br /><br /><cite>- {quotes[num].author}</cite>
           </blockquote>
         </Quote>
 
         <ButtonContainer>
-          <Button>Generate Quote</Button>
+          <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * quotes.length) : randNum)}>Generate Quote</Button>
           <Button primary>Tweet</Button>
         </ButtonContainer>
 
