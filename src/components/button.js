@@ -3,13 +3,13 @@ import { COLOR } from './color'
 
 export const Button = styled.button`
     
-    background: transparent;
+    background: ${COLOR.YELLOW};
     border-radius: 3px;
-    color: ${COLOR.DARK_GREY};
+    color: ${COLOR.BLACK};
     margin: 0 1em;
     padding: 0.5em 1em;
-    box-shadow: 0 3px 3px 0 rgba(0,0,0,0.5);
-    font-family: Helvetica Neue;
+    border: none;
+    font-family: Helvetica Neue, sans-serif;
 
     ${props => props.primary && css `
         background: ${COLOR.BLUE};
