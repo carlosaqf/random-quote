@@ -1,31 +1,48 @@
-export const quotes = [
-    {
-        quote: "Together we can change the world, just one random act of kindness at a time.",
-        author: "Ron Hall"
-    },
-    {
-        quote: "Carry out a random act of kindness, with no expectation of reward, safe in the knowledge that one day someone might do the same for you.",
-        author: "Princess Diana"
-    },
-    {
-        quote: "Goals transform a random walk into a chase.",
-        author: "Mihaly Csikszentmihalyi"
-    },
-    {
-        quote: "It is necessary to fall in love... if only to provide an alibi for all the random despair you are going to feel anyway.",
-        author: "Albert Camus"
-    },
-    {
-        quote: "We can all fight against loneliness by engaging in random acts of kindness.",
-        author: "Gail Honeyman"
-    },
-    {
-        quote: "I believe in fate. Sometimes that means an old bearded guy sitting on a cloud and pulling the strings; sometimes it means random atoms swirling through a cheerless universe; sometimes it means everything being preordained thanks to your karma credit from your previous lives.",
-        author: "Kyle MacLachlan"
-    },
-    {
-        quote: "I actually think that the most efficacious way of making a difference is to lead by example, and doing random acts of kindness is setting a very good example of how to behave in the world.",
-        author: "Misha Collins"
-    }
-];
+import React, { useState, useEffect } from 'react'
+import styled from 'styled-components'
+import { COLOR } from './color'
+import { Button } from './button'
 
+
+export const useFetch = (url, options) => {
+    const [response, setResponse] = useState(null);
+    const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    
+    useEffect(() => {
+        const fetchData = async () => {
+            setIsLoading(true);
+            try{
+                const res = await fetch(url, options);
+                const json = await res.json();
+                setResponse(json);
+                setIsLoading(false);
+            } catch (error) {
+                setError(error);
+            }
+        };
+        fetchData();
+    }, []);
+    return { response, error, isLoading };
+}
+
+
+export default function Quotes(){
+    
+    const res = useFetch("http://quotes.stormconsultancy.co.uk/random.json");
+    if (!res.response){
+        return <div>Loading...</div>
+    }
+    const quote = res.response.quote
+    const author = res.response.author
+    return (
+        <div className="quote">
+            <div>
+                <p>{quote}</p>
+                <div>
+                    - {author}
+                </div>
+            </div>
+        </div>
+    )
+}
