@@ -29,19 +29,26 @@ const ButtonContainer = styled.div`
 `;
 
 export default function QuoteBox() {
+  
+  const [num, setNum] = useState(0);
 
-  //let randNum = Math.floor(Math.random() * quotes.length)
-  //const [num, setNum] = useState(0)
-  //onClick={() => setNum(randNum === num ? Math.floor(Math.random() * quotes.length) : randNum)}
+  const res = useFetch("http://quotes.stormconsultancy.co.uk/quotes.json");
+  if (!res.response){
+      return <div>Loading...</div>
+  }
+  let randNum = Math.floor(Math.random() * res.response.length)
+  const quote = res.response[num].quote;
+  const author = res.response[randNum].author;
+  const quoteId = res.response[randNum].id;
 
   return (
       <QuoteContainer>
         <Quote>
-          <Quotes></Quotes>
+          <Quotes quote={quote} author={author} quoteId={quoteId}></Quotes>
         </Quote>
 
         <ButtonContainer>
-          <Button>Generate Quote</Button>
+          <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * res.response.length): randNum)}>Generate Quote</Button>
           <Button primary>Tweet</Button>
         </ButtonContainer>
 
