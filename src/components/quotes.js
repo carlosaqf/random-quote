@@ -27,20 +27,14 @@ export const useFetch = (url, options) => {
 }
 
 
-export default function Quotes(){
-    
-    const res = useFetch("http://quotes.stormconsultancy.co.uk/random.json");
-    if (!res.response){
-        return <div>Loading...</div>
-    }
-    const quote = res.response.quote
-    const author = res.response.author
+export default function Quotes({quote, author, quoteId}){
+
     return (
         <div className="quote">
             <div>
                 <p>{quote}</p>
                 <div>
-                    - {author}
+                    - {author} / {quoteId}
                 </div>
             </div>
         </div>
