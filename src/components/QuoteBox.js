@@ -32,14 +32,20 @@ export default function QuoteBox() {
   
   const [num, setNum] = useState(0);
 
+  // Call useFetch method and pass quote API URL as parameter
   const res = useFetch("http://quotes.stormconsultancy.co.uk/quotes.json");
+  
+  
   if (!res.response){
       return <div>Loading...</div>
   }
+
   let randNum = Math.floor(Math.random() * res.response.length)
+
+  // Initialize variables for Quote and author grabbed from useFetch
   const quote = res.response[num].quote;
-  const author = res.response[randNum].author;
-  const quoteId = res.response[randNum].id;
+  const author = res.response[num].author;
+  const quoteId = res.response[num].id;
 
   return (
       <QuoteContainer>
