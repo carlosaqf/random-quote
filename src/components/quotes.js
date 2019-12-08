@@ -1,8 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { COLOR } from './color'
-import { Button } from './button'
-
 
 export const useFetch = (url, options) => {
     const [response, setResponse] = useState(null);
