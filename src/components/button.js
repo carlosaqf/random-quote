@@ -15,4 +15,9 @@ export const Button = styled.button`
         background: ${COLOR.BLUE};
         color: ${COLOR.LIGHT_GREY};
     `}
+
+    a{
+        text-decoration: none;
+        color: ${COLOR.LIGHT_GREY};
+    }
 `;
