@@ -23,14 +23,14 @@ export const useFetch = (url, options) => {
 }
 
 
-export default function Quotes({quote, author, quoteId}){
+export default function Quotes({quote, author}){
 
     return (
         <div className="quote">
             <div>
                 <p>{quote}</p>
                 <div>
-                    - {author} / {quoteId}
+                    - {author}
                 </div>
             </div>
         </div>
