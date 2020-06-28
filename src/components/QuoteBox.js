@@ -75,6 +75,7 @@ export default function QuoteBox() {
   let randNum = Math.floor(Math.random() * res.response.data.length)
 
   // Initialize variables for Quote and author grabbed from useFetch
+<<<<<<< HEAD
   const quote = res.response.data[num].attributes.text
   const authorId = res.response.data[num].relationships.author.data.id
 
@@ -93,11 +94,16 @@ export default function QuoteBox() {
 
   
   
+=======
+  const quote = res.response[randNum].quote;
+  const author = res.response[randNum].author;
+>>>>>>> 2b90b85b6d15ee1cffa0d32f3199f31eefaf1af1
 
   return (
       <QuoteContainer>
 
         <Quote>
+<<<<<<< HEAD
 
           <h1>"{quote}"</h1>  
           <h3>- {authorName(authorId)}</h3>
@@ -113,6 +119,15 @@ export default function QuoteBox() {
           </ButtonContainer>
           
         </Quote>
+=======
+          <Quotes quote={quote} author={author}></Quotes>
+        </Quote>
+
+        <ButtonContainer>
+          <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * res.response.length): randNum)}>Generate Quote</Button>
+          <Button primary><a href={`https://twitter.com/intent/tweet?text=${quote}--${author}`}>Tweet</a></Button>
+        </ButtonContainer>
+>>>>>>> 2b90b85b6d15ee1cffa0d32f3199f31eefaf1af1
 
       </QuoteContainer>
   )
