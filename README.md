@@ -1,68 +1,69 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Credit to the owner of the API [Jim Merioles](https://github.com/jimmerioles)
 
-In the project directory, you can run:
+## To Run Project
+- Clone repo to local machine
+- Navigate to project folder and in a command prompt/terminal enter `npm start`
+- Go to `http://localhost:3000` on a new browser tab/window if it does not open one automatically.
 
-### `npm start`
+---
+## Miscellaneous Information
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### Technologies
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+This project was made to practice loading data from an api and then displaying that information.
 
-### `npm test`
+It was built using
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- React (Create-React-App, Hooks)
+- Styled Components
 
-### `npm run build`
+#### Biggest Challenges
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Random Quote Button
+- Tweet Button
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+To work on implementing a random button function I made use of the React Hook `useState`. This could have been accomplished any number of ways, but I figured I could use the practice.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+const [num, setNum] = useState(0)
 
-### `npm run eject`
+let randNum = Math.floor(Math.random() * res.response.data.length)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<Button onClick={() => 
+	setNum(randNum === num 
+		? Math.floor(Math.random() * res.response.data.length)
+		: randNum
+	)
+}>
+```
+The code above are the lines that both set and assign a new random number upon click of the generate button. 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+To implement the tweet functionality I simply pass the quote variable to a function that concatenates it to the proper url string and assign that to an anchor tag `<a>`
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+const tweetLink = (quote) => {
+    return `https://twitter.com/intent/tweet?text=${quote}`
+}
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+<Button primary>
+    <a href={tweetLink(quote)}>
+        Tweet
+	</a>
+</Button>
+```
 
-## Learn More
+#### Future Updates
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Some potential ideas for future ideas
+- Additional page that displays full list of all quotes
+- Ability to sort by Author
+- Search function for specific Author/Quote
+- Use of React/Router for multi-page naviagation
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+#### Questions/Issues
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Feel free to reach out to me! 

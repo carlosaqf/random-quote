@@ -14,7 +14,10 @@ const StyledFooter = styled.footer`
 
 export default function Footer() {
 	
-	return(
+	return (
+
 		<StyledFooter>Created by Carlos Fegurgur &copy; 2020</StyledFooter>
+
 	)
+	
 }

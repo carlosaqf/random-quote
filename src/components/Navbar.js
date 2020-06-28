@@ -11,13 +11,16 @@ const StyledNavbar = styled.h1`
   background: ${COLOR.LIGHT_GREY};
   width: 100%;
   text-align: center;
-  
+
 `
 
 
 export default function Navbar() {
 	
-	return(
+	return (
+
 		<StyledNavbar>Random Quote Generator</StyledNavbar>
+
 	)
+	
 }

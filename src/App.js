@@ -12,21 +12,14 @@ const AppContainer = styled.div`
 
 `;
 
-
-
-
 const App = () => (
 
   <AppContainer>
-
     <Navbar />
     <QuoteBox />
     <Footer />
-
   </AppContainer>
 
 )
-
-
 
 export default App;

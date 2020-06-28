@@ -55,7 +55,7 @@ const useFetch = (url) => {
           }
       };
       fetchData();
-  }, []);
+  });
 
   return { response, error, isLoading };
 }
@@ -65,7 +65,6 @@ export default function QuoteBox() {
   const [num, setNum] = useState(0);
 
   // Call useFetch method and pass quote API URL as parameter
-  // const res = useFetch("http://quotes.stormconsultancy.co.uk/quotes.json");
   const res = useFetch("https://randomstoicquotesapi.herokuapp.com/api/v1/quotes");
   
   if (!res.response){
@@ -75,7 +74,6 @@ export default function QuoteBox() {
   let randNum = Math.floor(Math.random() * res.response.data.length)
 
   // Initialize variables for Quote and author grabbed from useFetch
-<<<<<<< HEAD
   const quote = res.response.data[num].attributes.text
   const authorId = res.response.data[num].relationships.author.data.id
 
@@ -92,42 +90,30 @@ export default function QuoteBox() {
     return name
   }
 
-  
-  
-=======
-  const quote = res.response[randNum].quote;
-  const author = res.response[randNum].author;
->>>>>>> 2b90b85b6d15ee1cffa0d32f3199f31eefaf1af1
+  const tweetLink = (quote, author) => {
+    return `https://twitter.com/intent/tweet?text=${quote}%20-${author}`
+  }
 
   return (
       <QuoteContainer>
 
         <Quote>
-<<<<<<< HEAD
 
           <h1>"{quote}"</h1>  
           <h3>- {authorName(authorId)}</h3>
 
           <ButtonContainer>
-            <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * res.response.data.length): randNum)}>Generate Quote</Button>
-            
-            {/* TODO: Add Tweet button functionality */}
-            
+            <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * res.response.data.length): randNum)}>
+              Generate Quote
+            </Button>  
             <Button primary>
-              Tweet
+              <a href={tweetLink(quote, authorName(authorId))}>
+                Tweet
+              </a>
             </Button>
           </ButtonContainer>
           
         </Quote>
-=======
-          <Quotes quote={quote} author={author}></Quotes>
-        </Quote>
-
-        <ButtonContainer>
-          <Button onClick={() => setNum(randNum === num ? Math.floor(Math.random() * res.response.length): randNum)}>Generate Quote</Button>
-          <Button primary><a href={`https://twitter.com/intent/tweet?text=${quote}--${author}`}>Tweet</a></Button>
-        </ButtonContainer>
->>>>>>> 2b90b85b6d15ee1cffa0d32f3199f31eefaf1af1
 
       </QuoteContainer>
   )
